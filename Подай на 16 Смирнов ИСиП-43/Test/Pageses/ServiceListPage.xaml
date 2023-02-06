@@ -1,0 +1,71 @@
+﻿<Page x:Class="Test.Pageses.ServiceListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Test.Pageses"
+      mc:Ignorable="d" 
+      Loaded="Page_Loaded"
+      d:DesignHeight="450" 
+      d:DesignWidth="800"
+      Title="Список Услуг">
+
+    <Grid>
+        <!--Раздел страниц на секции-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+
+        <!--Текст для вывода результата поиска-->
+        <TextBlock Text="50/237"
+                   Name="ResultTxb"
+                   Grid.Row="0"
+                   Margin="10 0 0 0"
+                   VerticalAlignment="Center"/>
+
+        <!--Верхняя панель, в которой элементы поиска-->
+        <StackPanel Orientation="Horizontal"
+                    Height="30"
+                    HorizontalAlignment="Center">
+
+            <!--Поле для ввода поиска-->
+            <TextBox Width="300"
+                     Height="16"
+                     TextChanged="TxbSearch_TextChanged"
+                     Name="TxbSearch"/>
+            <!--Сортировка-->
+            <!--Фильтрация-->
+        </StackPanel>
+
+
+
+        <!--Вывод материалов-->
+        <ListView
+            
+            x:Name="ProductList"
+            Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image 
+                            Width="140"
+                            Height="140"
+                            Source="{Binding ImagePath}"/>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="{Binding Service}"/>
+                                <Label Content="{Binding Price}" ContentStringFormat="Цена:{0}"/>
+                                <Label Content="{Binding Time}" ContentStringFormat="Время:{0}"/>
+                            </StackPanel>
+                            <Label Content="{Binding Discount}" ContentStringFormat="Скидка:{0}"/>
+                        </StackPanel>
+
+
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
